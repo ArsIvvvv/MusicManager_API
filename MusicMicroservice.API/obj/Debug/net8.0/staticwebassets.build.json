@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "3UaQdeuMPhVT+PypC3BisynlSUOk64s8p/62MxpHLyU=",
+  "Source": "MusicMicroservice.API",
+  "BasePath": "_content/MusicMicroservice.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

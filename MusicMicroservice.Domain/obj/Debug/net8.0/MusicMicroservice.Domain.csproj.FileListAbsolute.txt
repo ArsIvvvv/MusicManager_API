@@ -1,0 +1,11 @@
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#/MusicMicroservice/MusicMicroservice.Domain/bin/Debug/net8.0/MusicMicroservice.Domain.deps.json
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#/MusicMicroservice/MusicMicroservice.Domain/bin/Debug/net8.0/MusicMicroservice.Domain.dll
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#/MusicMicroservice/MusicMicroservice.Domain/bin/Debug/net8.0/MusicMicroservice.Domain.pdb
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#/MusicMicroservice/MusicMicroservice.Domain/obj/Debug/net8.0/MusicMicroservice.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#/MusicMicroservice/MusicMicroservice.Domain/obj/Debug/net8.0/MusicMicroservice.Domain.AssemblyInfoInputs.cache
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#/MusicMicroservice/MusicMicroservice.Domain/obj/Debug/net8.0/MusicMicroservice.Domain.AssemblyInfo.cs
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#/MusicMicroservice/MusicMicroservice.Domain/obj/Debug/net8.0/MusicMicroservice.Domain.csproj.CoreCompileInputs.cache
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#/MusicMicroservice/MusicMicroservice.Domain/obj/Debug/net8.0/MusicMicroservice.Domain.dll
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#/MusicMicroservice/MusicMicroservice.Domain/obj/Debug/net8.0/refint/MusicMicroservice.Domain.dll
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#/MusicMicroservice/MusicMicroservice.Domain/obj/Debug/net8.0/MusicMicroservice.Domain.pdb
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#/MusicMicroservice/MusicMicroservice.Domain/obj/Debug/net8.0/ref/MusicMicroservice.Domain.dll
