@@ -4,8 +4,10 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using MusicMicroservice.Domain.Common;
+using MusicMicroservice.Domain.Entities;
+using MusicMicroservice.Domain.Exceptions.MusicExceptions;
 
-namespace MusicMicroservice.Domain
+namespace MusicMicroservice.Domain.Entities
 {
     public class Music: BaseEntity<Guid>
     {
@@ -13,6 +15,8 @@ namespace MusicMicroservice.Domain
         public int Year {get; private set;}
         public string Style {get; private set;} =string.Empty;
 
+        private readonly List<Executor> _executor= new();
+        public IReadOnlyCollection<Executor> Executors => _executor.AsReadOnly(); 
 
         protected Music() {}
 
@@ -28,27 +32,66 @@ namespace MusicMicroservice.Domain
         {
             if(id == Guid.Empty)
             {
-                throw new Exception ("Id пустой");
+                throw new DomainMusicException("ID_EMPTY","Id пустой");
             }
 
             if(string.IsNullOrWhiteSpace(name))
             {
-                throw new Exception("Название не может быть пустым");
+                throw new DomainMusicException("NAME_NULL","Название не может быть пустым");
             }
 
             if(year < 0)
             {
-                throw new Exception("Год не может быть отриц");
+                throw new DomainMusicException("YEAR_NEGATIVE","Год не может быть отриц");
             }
 
             if (string.IsNullOrWhiteSpace(style))
             {
-                 throw new Exception("Жанр музыки не может быть пустым");
+                 throw new DomainMusicException("STYLE_NULL","Жанр музыки не может быть пустым");
             }
 
             return new Music (id,name,year,style);
         }
 
+        public void ChangeName(string name)
+        {
+            if(string.IsNullOrWhiteSpace(name))
+            {
+                throw new DomainMusicException("NAME_NULL","Название не может быть пустым");
+            }
+
+            Name = name;
+        }
+
+        public void AddExecutor(Executor executor)
+        {
+            if(executor == null)
+            {
+                throw new DomainMusicException("EXECUTOR_NULL","Исполнитель не может быть пустым");
+            }
+
+            _executor.Add(executor);
+        }
+
+        public void AddRangeExecutors(IEnumerable<Executor> executors)
+        {
+            if(executors == null || !executors.Any())
+            {
+                throw new DomainMusicException("EXECUTORS_RANGE_NULL","Исполнители не могут быть пустыми");
+            }
+
+            _executor.AddRange(executors);
+        }
+
+        public void RemoveExecutor(Executor executor)
+        {
+            if(executor == null)
+            {
+                throw new DomainMusicException("EXECUTOR_NULL","Исполнитель не может быть пустым");
+            }
+
+            _executor.Remove(executor);
+        }
         
     }
 }

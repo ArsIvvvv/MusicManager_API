@@ -9,3 +9,15 @@
 /Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#/MusicMicroservice/MusicMicroservice.Contracts/obj/Debug/net8.0/refint/MusicMicroservice.Contracts.dll
 /Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#/MusicMicroservice/MusicMicroservice.Contracts/obj/Debug/net8.0/MusicMicroservice.Contracts.pdb
 /Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#/MusicMicroservice/MusicMicroservice.Contracts/obj/Debug/net8.0/ref/MusicMicroservice.Contracts.dll
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/bin/Debug/net8.0/MusicMicroservice.Contracts.deps.json
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/bin/Debug/net8.0/MusicMicroservice.Contracts.dll
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/bin/Debug/net8.0/MusicMicroservice.Contracts.pdb
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/obj/Debug/net8.0/MusicMicroservice.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/obj/Debug/net8.0/MusicMicroservice.Contracts.AssemblyInfoInputs.cache
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/obj/Debug/net8.0/MusicMicroservice.Contracts.AssemblyInfo.cs
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/obj/Debug/net8.0/MusicMicroservice.Contracts.csproj.CoreCompileInputs.cache
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/obj/Debug/net8.0/MusicMicroservice.Contracts.sourcelink.json
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/obj/Debug/net8.0/MusicMicroservice.Contracts.dll
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/obj/Debug/net8.0/refint/MusicMicroservice.Contracts.dll
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/obj/Debug/net8.0/MusicMicroservice.Contracts.pdb
+/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/obj/Debug/net8.0/ref/MusicMicroservice.Contracts.dll

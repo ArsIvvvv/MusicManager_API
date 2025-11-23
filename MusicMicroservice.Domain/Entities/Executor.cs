@@ -48,6 +48,46 @@ namespace MusicMicroservice.Domain.Entities
             return new Executor(id,firstName,lastName,nik);
         }
 
+        public void ChangeNickname(string nickname)
+        {
+            if (string.IsNullOrWhiteSpace(nickname))
+            {
+                 throw new DomainExecutorException("EXECUTOR_NICKNAME_NULL","Псевдоним не может быть пустым");
+            }
+
+            Nickname = nickname;
+        }
+
+        public void AddMusic(Music music)
+        {
+            if(music == null)
+            {
+                throw new DomainExecutorException("MUSIC_NULL","Музыка не может быть пустой");
+            }
+
+            _musics.Add(music);
+        }
+
+        public void AddRangeMusic(IEnumerable<Music> musics)
+        {
+            if(musics == null || !musics.Any())
+            {
+                throw new DomainExecutorException("MUSICS_NULL","Музыки не могут быть пустыми");
+            }
+
+            _musics.AddRange(musics);
+        }
+
+        public void RemoveMusic(Music music)
+        {
+            if(music == null)
+            {
+                throw new DomainExecutorException("MUSIC_NULL","Музыка не может быть пустой");
+            }
+
+            _musics.Remove(music);
+        }
+
 
 
     }

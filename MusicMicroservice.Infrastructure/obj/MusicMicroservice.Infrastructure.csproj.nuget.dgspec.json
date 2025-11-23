@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Infrastructure/MusicMicroservice.Infrastructure.csproj": {}
+    "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Infrastructure/MusicMicroservice.Infrastructure.csproj": {}
   },
   "projects": {
-    "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Application/MusicMicroservice.Application.csproj": {
+    "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Application/MusicMicroservice.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Application/MusicMicroservice.Application.csproj",
+        "projectUniqueName": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Application/MusicMicroservice.Application.csproj",
         "projectName": "MusicMicroservice.Application",
-        "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Application/MusicMicroservice.Application.csproj",
+        "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Application/MusicMicroservice.Application.csproj",
         "packagesPath": "/Users/ivlev.arseniy05mail.ru/.nuget/packages/",
-        "outputPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Application/obj/",
+        "outputPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/ivlev.arseniy05mail.ru/.nuget/NuGet/NuGet.Config"
@@ -26,11 +26,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj": {
-                "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj"
+              "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj": {
+                "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj"
               },
-              "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj": {
-                "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj"
+              "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj": {
+                "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj"
               }
             }
           }
@@ -69,14 +69,14 @@
         }
       }
     },
-    "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj": {
+    "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj",
+        "projectUniqueName": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj",
         "projectName": "MusicMicroservice.Contracts",
-        "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj",
+        "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj",
         "packagesPath": "/Users/ivlev.arseniy05mail.ru/.nuget/packages/",
-        "outputPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Contracts/obj/",
+        "outputPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/ivlev.arseniy05mail.ru/.nuget/NuGet/NuGet.Config"
@@ -127,14 +127,14 @@
         }
       }
     },
-    "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj": {
+    "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj",
+        "projectUniqueName": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj",
         "projectName": "MusicMicroservice.Domain",
-        "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj",
+        "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj",
         "packagesPath": "/Users/ivlev.arseniy05mail.ru/.nuget/packages/",
-        "outputPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Domain/obj/",
+        "outputPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/ivlev.arseniy05mail.ru/.nuget/NuGet/NuGet.Config"
@@ -185,14 +185,14 @@
         }
       }
     },
-    "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Infrastructure/MusicMicroservice.Infrastructure.csproj": {
+    "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Infrastructure/MusicMicroservice.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Infrastructure/MusicMicroservice.Infrastructure.csproj",
+        "projectUniqueName": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Infrastructure/MusicMicroservice.Infrastructure.csproj",
         "projectName": "MusicMicroservice.Infrastructure",
-        "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Infrastructure/MusicMicroservice.Infrastructure.csproj",
+        "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Infrastructure/MusicMicroservice.Infrastructure.csproj",
         "packagesPath": "/Users/ivlev.arseniy05mail.ru/.nuget/packages/",
-        "outputPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Infrastructure/obj/",
+        "outputPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Infrastructure/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/ivlev.arseniy05mail.ru/.nuget/NuGet/NuGet.Config"
@@ -207,11 +207,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Application/MusicMicroservice.Application.csproj": {
-                "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Application/MusicMicroservice.Application.csproj"
+              "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Application/MusicMicroservice.Application.csproj": {
+                "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Application/MusicMicroservice.Application.csproj"
               },
-              "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj": {
-                "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj"
+              "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj": {
+                "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj"
               }
             }
           }
@@ -230,6 +230,22 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj",
+      "projectUniqueName": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj",
       "projectName": "MusicMicroservice.Contracts",
-      "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj",
+      "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj",
       "packagesPath": "/Users/ivlev.arseniy05mail.ru/.nuget/packages/",
-      "outputPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Contracts/obj/",
+      "outputPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Contracts/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/ivlev.arseniy05mail.ru/.nuget/NuGet/NuGet.Config"

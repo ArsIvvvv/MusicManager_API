@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj": {}
+    "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj": {}
   },
   "projects": {
-    "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj": {
+    "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj",
+        "projectUniqueName": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj",
         "projectName": "MusicMicroservice.Domain",
-        "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj",
+        "projectPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Domain/MusicMicroservice.Domain.csproj",
         "packagesPath": "/Users/ivlev.arseniy05mail.ru/.nuget/packages/",
-        "outputPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/MusicMicroservice/MusicMicroservice.Domain/obj/",
+        "outputPath": "/Users/ivlev.arseniy05mail.ru/Desktop/Изучение C#(Проект бибилиотека музыки)/src/MusicMicroservice/MusicMicroservice.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/ivlev.arseniy05mail.ru/.nuget/NuGet/NuGet.Config"
