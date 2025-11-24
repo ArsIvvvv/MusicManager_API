@@ -13,7 +13,7 @@ namespace MusicMicroservice.Domain.Entities
     {
         public string Name {get; private set;} = string.Empty;
         public int Year {get; private set;}
-        public string Style {get; private set;} =string.Empty;
+        public string Style {get; private set;} = string.Empty;
 
         private readonly List<Executor> _executor= new();
         public IReadOnlyCollection<Executor> Executors => _executor.AsReadOnly(); 

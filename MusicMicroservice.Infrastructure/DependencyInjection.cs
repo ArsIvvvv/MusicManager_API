@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MusicMicroservice.Application.Common.Interfaces.Persistance;
 using MusicMicroservice.Infrastructure.Data;
+using MusicMicroservice.Infrastructure.Data.Repositories;
 
 namespace MusicMicroservice.Infrastructure
 {
@@ -14,9 +16,7 @@ namespace MusicMicroservice.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             AddDbContext(services, configuration);
-
-            //AddEfCoreRepositories(services);
-
+            AddEfCoreRepositories(services);
 
             return services;
         }
@@ -32,10 +32,10 @@ namespace MusicMicroservice.Infrastructure
             });
         }
 
-        //private static void AddEfCoreRepositories(IServiceCollection services)
-        //{
-           // services.AddScoped<IAuthorRepository, AuthorRepository>();
-          //  services.AddScoped<IBookRepository, BookRepository>();
-       // }
+        private static void AddEfCoreRepositories(IServiceCollection services)
+        {
+           services.AddScoped<IExecuterRepository, ExecuterRepository>();
+           services.AddScoped<IMusicRepository, MusicRepository>();
+        }
     }
 }
