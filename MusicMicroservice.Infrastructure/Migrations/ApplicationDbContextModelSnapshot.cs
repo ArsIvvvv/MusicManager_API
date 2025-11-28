@@ -8,99 +8,98 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace MusicMicroservice.Infrastructure.Migrations
+namespace MusicMicroservice.Infrastructure.Migrations;
+
+[DbContext(typeof(ApplicationDbContext))]
+partial class ApplicationDbContextModelSnapshot : ModelSnapshot
 {
-    [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    protected override void BuildModel(ModelBuilder modelBuilder)
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
-        {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+        modelBuilder
+            .HasAnnotation("ProductVersion", "8.0.0")
+            .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+        NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("MusicExecutors", b =>
-                {
-                    b.Property<Guid>("ExecutorId")
-                        .HasColumnType("uuid");
+        modelBuilder.Entity("MusicExecutors", b =>
+            {
+                b.Property<Guid>("ExecutorId")
+                    .HasColumnType("uuid");
 
-                    b.Property<Guid>("MusicId")
-                        .HasColumnType("uuid");
+                b.Property<Guid>("MusicId")
+                    .HasColumnType("uuid");
 
-                    b.HasKey("ExecutorId", "MusicId");
+                b.HasKey("ExecutorId", "MusicId");
 
-                    b.HasIndex("MusicId");
+                b.HasIndex("MusicId");
 
-                    b.ToTable("MusicExecutors");
-                });
+                b.ToTable("MusicExecutors");
+            });
 
-            modelBuilder.Entity("MusicMicroservice.Domain.Entities.Executor", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+        modelBuilder.Entity("MusicMicroservice.Domain.Entities.Executor", b =>
+            {
+                b.Property<Guid>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("uuid");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
+                b.Property<string>("FirstName")
+                    .IsRequired()
+                    .HasMaxLength(200)
+                    .HasColumnType("character varying(200)");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
+                b.Property<string>("LastName")
+                    .IsRequired()
+                    .HasMaxLength(200)
+                    .HasColumnType("character varying(200)");
 
-                    b.Property<string>("Nickname")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
+                b.Property<string>("Nickname")
+                    .IsRequired()
+                    .HasMaxLength(200)
+                    .HasColumnType("character varying(200)");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Executors", (string)null);
-                });
+                b.ToTable("Executors", (string)null);
+            });
 
-            modelBuilder.Entity("MusicMicroservice.Domain.Entities.Music", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+        modelBuilder.Entity("MusicMicroservice.Domain.Entities.Music", b =>
+            {
+                b.Property<Guid>("Id")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("uuid");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
+                b.Property<string>("Name")
+                    .IsRequired()
+                    .HasMaxLength(200)
+                    .HasColumnType("character varying(200)");
 
-                    b.Property<string>("Style")
-                        .IsRequired()
-                        .HasColumnType("text");
+                b.Property<string>("Style")
+                    .IsRequired()
+                    .HasColumnType("text");
 
-                    b.Property<int>("Year")
-                        .HasColumnType("integer");
+                b.Property<int>("Year")
+                    .HasColumnType("integer");
 
-                    b.HasKey("Id");
+                b.HasKey("Id");
 
-                    b.ToTable("Musics", (string)null);
-                });
+                b.ToTable("Musics", (string)null);
+            });
 
-            modelBuilder.Entity("MusicExecutors", b =>
-                {
-                    b.HasOne("MusicMicroservice.Domain.Entities.Executor", null)
-                        .WithMany()
-                        .HasForeignKey("ExecutorId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+        modelBuilder.Entity("MusicExecutors", b =>
+            {
+                b.HasOne("MusicMicroservice.Domain.Entities.Executor", null)
+                    .WithMany()
+                    .HasForeignKey("ExecutorId")
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .IsRequired();
 
-                    b.HasOne("MusicMicroservice.Domain.Entities.Music", null)
-                        .WithMany()
-                        .HasForeignKey("MusicId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-                });
+                b.HasOne("MusicMicroservice.Domain.Entities.Music", null)
+                    .WithMany()
+                    .HasForeignKey("MusicId")
+                    .OnDelete(DeleteBehavior.Restrict)
+                    .IsRequired();
+            });
 #pragma warning restore 612, 618
-        }
     }
 }

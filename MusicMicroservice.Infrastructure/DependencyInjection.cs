@@ -9,33 +9,32 @@ using MusicMicroservice.Application.Common.Interfaces.Persistance;
 using MusicMicroservice.Infrastructure.Data;
 using MusicMicroservice.Infrastructure.Data.Repositories;
 
-namespace MusicMicroservice.Infrastructure
+namespace MusicMicroservice.Infrastructure;
+
+public static class DependencyInjection
 {
-    public static class DependencyInjection
+    public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        AddDbContext(services, configuration);
+        AddEfCoreRepositories(services);
+
+        return services;
+    }
+
+    private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
+    {
+        var connectionStringDb = configuration.GetConnectionString("DefaultConnection");
+
+        // Регистрация контекста базы данных с использованием Npgsql
+        services.AddDbContext<ApplicationDbContext>(options =>
         {
-            AddDbContext(services, configuration);
-            AddEfCoreRepositories(services);
+            options.UseNpgsql(connectionStringDb);
+        });
+    }
 
-            return services;
-        }
-
-        private static void AddDbContext(IServiceCollection services, IConfiguration configuration)
-        {
-            var connectionStringDb = configuration.GetConnectionString("DefaultConnection");
-
-            // Регистрация контекста базы данных с использованием Npgsql
-            services.AddDbContext<ApplicationDbContext>(options =>
-            {
-                options.UseNpgsql(connectionStringDb);
-            });
-        }
-
-        private static void AddEfCoreRepositories(IServiceCollection services)
-        {
-           services.AddScoped<IExecuterRepository, ExecuterRepository>();
-           services.AddScoped<IMusicRepository, MusicRepository>();
-        }
+    private static void AddEfCoreRepositories(IServiceCollection services)
+    {
+       services.AddScoped<IExecuterRepository, ExecuterRepository>();
+       services.AddScoped<IMusicRepository, MusicRepository>();
     }
 }

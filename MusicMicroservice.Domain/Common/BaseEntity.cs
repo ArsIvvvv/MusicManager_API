@@ -4,10 +4,9 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MusicMicroservice.Domain.Common
+namespace MusicMicroservice.Domain.Common;
+
+public abstract class BaseEntity<T>
 {
-    public abstract class BaseEntity<T>
-    {
-        public T Id {get; protected set;}
-    }
+    public T Id {get; protected set;}
 }
