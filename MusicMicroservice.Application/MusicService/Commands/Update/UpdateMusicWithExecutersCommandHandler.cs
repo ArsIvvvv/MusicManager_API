@@ -12,7 +12,6 @@ namespace MusicMicroservice.Application.MusicService.Commands.Update;
 
 public class UpdateMusicWithExecutersCommandHandler : ICommandHandler<UpdateMusicWithExecutersCommand>
 {
-
     private readonly IMusicRepository _musicRepository;
 
     private readonly IExecuterRepository _executerRepository;

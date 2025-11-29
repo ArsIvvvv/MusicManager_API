@@ -24,7 +24,6 @@ public class GetAllMusicQueryHandler : IQueryHandler<GetAllMusicQuery, Result<IE
             var musics = await _musicRepository.GetAllAsync(false, cancellationToken);
             
             return Result.Ok(musics.Select (m => MapToResponse(m)));  
-            
         }
         catch(Exception ex)
         {

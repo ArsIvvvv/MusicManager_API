@@ -58,6 +58,26 @@ public class Executor: BaseEntity<Guid>
         Nickname = nickname;
     }
 
+    public void ChangeFirstName(string firstName)
+    {
+        if (string.IsNullOrWhiteSpace(firstName))
+        {
+             throw new DomainExecutorException("EXECUTOR_FIRSTNAME_NULL","Имя не может быть пустым");
+        }
+
+        FirstName = firstName;
+    }
+    
+    public void ChangeLastName(string lastName)
+    {
+        if (string.IsNullOrWhiteSpace(lastName))
+        {
+             throw new DomainExecutorException("EXECUTER_LASTNAME_NULL","Фамилия не может быть пустым");
+        }
+
+        LastName = lastName;
+    }
+
     public void AddMusic(Music music)
     {
         if(music == null)
