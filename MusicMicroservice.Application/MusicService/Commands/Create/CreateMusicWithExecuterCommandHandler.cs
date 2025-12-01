@@ -7,46 +7,46 @@ using Microsoft.Extensions.Logging;
 using MusicMicroservice.Application.Common.Errors;
 using MusicMicroservice.Application.Common.Interfaces.CQRS;
 using MusicMicroservice.Application.Common.Interfaces.Persistance;
-using MusicMicroservice.Contracts.Responses.Executer;
+using MusicMicroservice.Contracts.Responses.Executor;
 using MusicMicroservice.Contracts.Responses.Music;
 using MusicMicroservice.Domain.Entities;
 using MusicMicroservice.Domain.Exceptions;
 
 namespace MusicMicroservice.Application.MusicService.Commands.Create;
 
-public class CreateMusicWithExecuterCommandHandler : ICommandHandler<CreateMusicWithExecuterCommand, MusicWithExecutersResponse>
+public class CreateMusicWithExecutorCommandHandler : ICommandHandler<CreateMusicWithExecutorCommand, MusicWithExecutorsResponse>
 {
     private readonly IMusicRepository _musicRepository;
-    private readonly ILogger<CreateMusicWithExecuterCommandHandler> _logger;
+    private readonly ILogger<CreateMusicWithExecutorCommandHandler> _logger;
 
-    public CreateMusicWithExecuterCommandHandler(IMusicRepository musicRepository, ILogger<CreateMusicWithExecuterCommandHandler> logger)
+    public CreateMusicWithExecutorCommandHandler(IMusicRepository musicRepository, ILogger<CreateMusicWithExecutorCommandHandler> logger)
     {
         _musicRepository = musicRepository;
         _logger = logger;
     }
 
-    public async Task<Result<MusicWithExecutersResponse>> Handle(CreateMusicWithExecuterCommand command, CancellationToken cancellationToken)
+    public async Task<Result<MusicWithExecutorsResponse>> Handle(CreateMusicWithExecutorCommand command, CancellationToken cancellationToken)
     {
         try
         {
             var newMusic = Music.Create(Guid.NewGuid(), command.Name, command.Year, command.Style);
-            if(command.Executers is not null && command.Executers?.Count > 0)
+            if(command.Executors is not null && command.Executors?.Count > 0)
             {
-                var newExecuters = new List<Executor>();
-                foreach(var executer in command.Executers)
+                var newExecutors = new List<Executor>();
+                foreach(var Executor in command.Executors)
                 {
-                    var newExecuter = Executor.Create(Guid.NewGuid(), 
-                    executer.FirstName,
-                    executer.LastName,
-                    executer.Nickname);
+                    var newExecutor = Executor.Create(Guid.NewGuid(), 
+                    Executor.FirstName,
+                    Executor.LastName,
+                    Executor.Nickname);
                         
-                    newExecuters.Add(newExecuter);
+                    newExecutors.Add(newExecutor);
                 }
-                newMusic.AddRangeExecutors(newExecuters);
+                newMusic.AddRangeExecutors(newExecutors);
             }
             await _musicRepository.AddAsync(newMusic, cancellationToken);
 
-            return Result.Ok(MapToResponseWithExecuters(newMusic));
+            return Result.Ok(MapToResponseWithExecutors(newMusic));
         }
         catch(DomainException ex)
         {
@@ -54,19 +54,19 @@ public class CreateMusicWithExecuterCommandHandler : ICommandHandler<CreateMusic
         }
         catch(Exception ex)
         {
-            _logger.LogError(ex, "Unexpected error create music with executers");
-            return Result.Fail<MusicWithExecutersResponse>(new DatabaseError(ex.Message));
+            _logger.LogError(ex, "Unexpected error create music with Executors");
+            return Result.Fail<MusicWithExecutorsResponse>(new DatabaseError(ex.Message));
         } 
     }
-    private MusicWithExecutersResponse MapToResponseWithExecuters(Music music)
+    private MusicWithExecutorsResponse MapToResponseWithExecutors(Music music)
         {
-            return new MusicWithExecutersResponse(
+            return new MusicWithExecutorsResponse(
                 music.Id, 
                 music.Name, 
                 music.Year,
                 music.Style, 
                 music.Executors.Select(
-                    e => new ExecuterResponse(
+                    e => new ExecutorResponse(
                         e.Id, 
                         e.FirstName, 
                         e.LastName,

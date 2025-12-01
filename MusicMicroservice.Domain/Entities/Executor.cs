@@ -30,7 +30,7 @@ public class Executor: BaseEntity<Guid>
 
          if(id == Guid.Empty)
         {
-            throw new DomainExecutorException("EXECUTER_ID_EMPTY","Id пустой");
+            throw new DomainExecutorException("Executor_ID_EMPTY","Id пустой");
         }
         if (string.IsNullOrWhiteSpace(firstName))
         {
@@ -38,7 +38,7 @@ public class Executor: BaseEntity<Guid>
         }
         if (string.IsNullOrWhiteSpace(lastName))
         {
-             throw new DomainExecutorException("EXECUTER_LASTNAME_NULL","Фамилия не может быть пустым");
+             throw new DomainExecutorException("Executor_LASTNAME_NULL","Фамилия не может быть пустым");
         }
         if (string.IsNullOrWhiteSpace(nik))
         {
@@ -72,7 +72,7 @@ public class Executor: BaseEntity<Guid>
     {
         if (string.IsNullOrWhiteSpace(lastName))
         {
-             throw new DomainExecutorException("EXECUTER_LASTNAME_NULL","Фамилия не может быть пустым");
+             throw new DomainExecutorException("Executor_LASTNAME_NULL","Фамилия не может быть пустым");
         }
 
         LastName = lastName;

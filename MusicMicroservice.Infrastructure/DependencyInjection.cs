@@ -34,7 +34,7 @@ public static class DependencyInjection
 
     private static void AddEfCoreRepositories(IServiceCollection services)
     {
-       services.AddScoped<IExecuterRepository, ExecuterRepository>();
+       services.AddScoped<IExecutorRepository, ExecutorRepository>();
        services.AddScoped<IMusicRepository, MusicRepository>();
     }
 }

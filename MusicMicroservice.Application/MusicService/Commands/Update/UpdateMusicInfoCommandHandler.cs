@@ -8,7 +8,6 @@ using MusicMicroservice.Application.Common.Errors;
 using MusicMicroservice.Application.Common.Interfaces.CQRS;
 using MusicMicroservice.Application.Common.Interfaces.Persistance;
 using MusicMicroservice.Application.Common.Interfaces.Persistance.Redis;
-using MusicMicroservice.Application.Common.Interfaces.Services;
 using MusicMicroservice.Application.MusicService.Commands.Update;
 
 namespace MusicMicroservice.Application.MusicService.Commands.Update;

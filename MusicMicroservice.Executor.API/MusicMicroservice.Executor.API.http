@@ -1,0 +1,6 @@
+@MusicMicroservice.Executor.API_HostAddress = http://localhost:5118
+
+GET {{MusicMicroservice.Executor.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

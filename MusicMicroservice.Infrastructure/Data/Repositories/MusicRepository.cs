@@ -32,11 +32,11 @@ public class MusicRepository : IMusicRepository
         await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task<IEnumerable<Music>> GetAllAsync(bool includeExecuters, CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<Music>> GetAllAsync(bool includeExecutors, CancellationToken cancellationToken = default)
     {
         var query = _context.Musics.AsQueryable();
 
-        if (includeExecuters)
+        if (includeExecutors)
         {
             query = query.Include(m => m.Executors);
         }
@@ -44,11 +44,11 @@ public class MusicRepository : IMusicRepository
         return await query.ToListAsync(cancellationToken);    
     }
 
-    public async Task<Music> GetByIdAsync(Guid id, bool includeExecuters, CancellationToken cancellationToken = default)
+    public async Task<Music> GetByIdAsync(Guid id, bool includeExecutors, CancellationToken cancellationToken = default)
     {
         var query = _context.Musics.AsQueryable();
 
-        if (includeExecuters)
+        if (includeExecutors)
         {
             query = query.Include(m => m.Executors);
         }

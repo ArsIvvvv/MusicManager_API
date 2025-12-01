@@ -10,20 +10,20 @@ using MusicMicroservice.Application.Common.Interfaces.Persistance;
 
 namespace MusicMicroservice.Application.MusicService.Commands.Update;
 
-public class UpdateMusicWithExecutersCommandHandler : ICommandHandler<UpdateMusicWithExecutersCommand>
+public class UpdateMusicWithExecutorsCommandHandler : ICommandHandler<UpdateMusicWithExecutorsCommand>
 {
     private readonly IMusicRepository _musicRepository;
 
-    private readonly IExecuterRepository _executerRepository;
-    private readonly ILogger<UpdateMusicWithExecutersCommandHandler> _logger;
+    private readonly IExecutorRepository _ExecutorRepository;
+    private readonly ILogger<UpdateMusicWithExecutorsCommandHandler> _logger;
 
-    public UpdateMusicWithExecutersCommandHandler(IMusicRepository musicRepository, IExecuterRepository executerRepository, ILogger<UpdateMusicWithExecutersCommandHandler> logger)
+    public UpdateMusicWithExecutorsCommandHandler(IMusicRepository musicRepository, IExecutorRepository ExecutorRepository, ILogger<UpdateMusicWithExecutorsCommandHandler> logger)
     {
         _musicRepository = musicRepository;
-        _executerRepository = executerRepository;
+        _ExecutorRepository = ExecutorRepository;
         _logger = logger;
     }
-    public async Task<Result> Handle(UpdateMusicWithExecutersCommand command, CancellationToken cancellationToken)
+    public async Task<Result> Handle(UpdateMusicWithExecutorsCommand command, CancellationToken cancellationToken)
     {
         try
         {
@@ -31,17 +31,17 @@ public class UpdateMusicWithExecutersCommandHandler : ICommandHandler<UpdateMusi
             if (music is null)
                 return Result.Fail(new NotFoundError($"Music was not found."));
 
-            var existingExecuters = await _executerRepository.GetRangeExecuterAsync(command.ExecuterId, cancellationToken);
-            if (!existingExecuters.Any())
-                return Result.Fail(new NotFoundError($"All executers with ID not found."));
+            var existingExecutors = await _ExecutorRepository.GetRangeExecutorAsync(command.ExecutorId, cancellationToken);
+            if (!existingExecutors.Any())
+                return Result.Fail(new NotFoundError($"All Executors with ID not found."));
 
-            if (existingExecuters.Count() != command.ExecuterId.Count)
+            if (existingExecutors.Count() != command.ExecutorId.Count)
             {
-                var existingExecutersIds = existingExecuters.Select(a => a.Id);
-                var missingExecutersIds = command.ExecuterId.Except(existingExecutersIds);
+                var existingExecutorsIds = existingExecutors.Select(a => a.Id);
+                var missingExecutorsIds = command.ExecutorId.Except(existingExecutorsIds);
 
                 return Result.Fail(new NotFoundError("One or more authors were not found.")
-                .WithMetadata("Missing Ids", missingExecutersIds));
+                .WithMetadata("Missing Ids", missingExecutorsIds));
             } 
 
             return Result.Ok();

@@ -16,13 +16,13 @@ namespace MusicMicroservice.Application.MusicService.Commands.Create;
 public class CreateMusicCommandHandler : ICommandHandler<CreateMusicCommand, MusicResponse>
 {
     private readonly IMusicRepository _musicRepository;
-    private readonly IExecuterRepository _executerRepository;
+    private readonly IExecutorRepository _ExecutorRepository;
     private readonly ILogger<CreateMusicCommandHandler> _logger;
 
-    public CreateMusicCommandHandler(IMusicRepository musicRepository, IExecuterRepository executerRepository, ILogger<CreateMusicCommandHandler> logger)
+    public CreateMusicCommandHandler(IMusicRepository musicRepository, IExecutorRepository ExecutorRepository, ILogger<CreateMusicCommandHandler> logger)
     {
         _musicRepository = musicRepository;
-        _executerRepository = executerRepository;
+        _ExecutorRepository = ExecutorRepository;
         _logger = logger;
     }
 
@@ -32,19 +32,19 @@ public class CreateMusicCommandHandler : ICommandHandler<CreateMusicCommand, Mus
         {
             var newMusic = Music.Create(Guid.NewGuid(), command.Name, command.Year, command.Style);
 
-            if(command.ExecuterIds is not null && command.ExecuterIds?.Count > 0)
+            if(command.ExecutorIds is not null && command.ExecutorIds?.Count > 0)
             {
-                var executers = await _executerRepository.GetRangeExecuterAsync(command.ExecuterIds, cancellationToken);
-                if (executers.Count() < 1)
-                    return Result.Fail(new NotFoundError("All executers not found."));
-                var existingIds = executers.Select(a => a.Id);
-                var missingIds = command.ExecuterIds.Except(existingIds);
+                var Executors = await _ExecutorRepository.GetRangeExecutorAsync(command.ExecutorIds, cancellationToken);
+                if (Executors.Count() < 1)
+                    return Result.Fail(new NotFoundError("All Executors not found."));
+                var existingIds = Executors.Select(a => a.Id);
+                var missingIds = command.ExecutorIds.Except(existingIds);
 
                 if(missingIds.Count() > 0)
-                    return Result.Fail(new NotFoundError("One or more executers were not found.")
+                    return Result.Fail(new NotFoundError("One or more Executors were not found.")
                     .WithMetadata("Missing Ids", missingIds));
 
-                newMusic.AddRangeExecutors(executers.ToList());
+                newMusic.AddRangeExecutors(Executors.ToList());
             }
 
             await _musicRepository.AddAsync(newMusic, cancellationToken);

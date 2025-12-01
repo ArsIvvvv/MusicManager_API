@@ -9,7 +9,7 @@ using MusicMicroservice.Domain.Entities;
 
 namespace MusicMicroservice.Application.MusicService.Queries
 {
-    public class GetAllMusicWithExecuterQuery: IQuery<Result<IEnumerable<MusicWithExecutersResponse>>>
+    public class GetAllMusicWithExecutorQuery: IQuery<Result<IEnumerable<MusicWithExecutorsResponse>>>
     {
         
     }
