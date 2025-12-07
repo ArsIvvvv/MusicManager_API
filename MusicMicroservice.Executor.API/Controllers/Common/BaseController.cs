@@ -6,7 +6,7 @@ using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 using MusicMicroservice.Application.Common.Errors;
 
-namespace MusicMicroservice.Music.API.Controllers.Common
+namespace MusicMicroservice.Executor.API.Controllers.Common
 {
     public class BaseController: ControllerBase
     {

@@ -10,7 +10,6 @@ namespace MusicMicroservice.Infrastructure.Data.Repositories;
 
 public class ExecutorRepository : IExecutorRepository
 {
-
     private readonly ApplicationDbContext _context;
 
     public ExecutorRepository(ApplicationDbContext context)
