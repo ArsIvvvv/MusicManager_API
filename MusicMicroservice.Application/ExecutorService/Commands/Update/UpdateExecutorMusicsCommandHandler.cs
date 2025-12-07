@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentResults;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using MusicMicroservice.Application.Common.Errors;
-using MusicMicroservice.Application.Common.Interfaces.CQRS;
 using MusicMicroservice.Application.Common.Interfaces.Persistance;
 
 namespace MusicMicroservice.Application.ExecutorService.Commands.Update;
 
-public class UpdateExecutorMusicsCommandHandler : ICommandHandler<UpdateExecutorMusicsCommand>
+public class UpdateExecutorMusicsCommandHandler : IRequestHandler<UpdateExecutorMusicsCommand, Result>
 {
     private readonly IMusicRepository _musicRepository;
 

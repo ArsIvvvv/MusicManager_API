@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMicroservice.API", "MusicMicroservice.API\MusicMicroservice.API.csproj", "{6960B708-CC40-43AA-9C9C-E3929BDB4580}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMicroservice.Contracts", "MusicMicroservice.Contracts\MusicMicroservice.Contracts.csproj", "{F690564B-EDA2-4A95-BE68-9BAAF81FE5A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMicroservice.Application", "MusicMicroservice.Application\MusicMicroservice.Application.csproj", "{31FCF691-A304-4969-9971-FE7E1D3F818A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMicroservice.Application", "MusicMicroservice.Application\MusicMicroservice.Application.csproj", "{B6BD206B-2BA7-435C-B777-A48FDBC0CCB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMicroservice.Domain", "MusicMicroservice.Domain\MusicMicroservice.Domain.csproj", "{5A77931B-C83D-4B91-8CE0-5F684BAEFBDC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMicroservice.Infrastructure", "MusicMicroservice.Infrastructure\MusicMicroservice.Infrastructure.csproj", "{55295FF0-2C2D-4669-8904-01089AB625C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMicroservice.Infrastructure", "MusicMicroservice.Infrastructure\MusicMicroservice.Infrastructure.csproj", "{38EE641A-7249-4729-AB5A-AFFF79E60881}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMicroservice.Domain", "MusicMicroservice.Domain\MusicMicroservice.Domain.csproj", "{EFB13DED-0B76-4FAB-B466-6D33E6E8C252}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMicroservice.Contracts", "MusicMicroservice.Contracts\MusicMicroservice.Contracts.csproj", "{80E1C045-24E7-4919-9CAA-7A02001A449D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMicroservice.Music.API", "MusicMicroservice.Music.API\MusicMicroservice.Music.API.csproj", "{BE82B3C5-F4B0-4784-8005-86CCCA224206}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMicroservice.Executor.API", "MusicMicroservice.Executor.API\MusicMicroservice.Executor.API.csproj", "{8679FA01-D392-4A29-9322-0F80F7AF9735}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,25 +24,29 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6960B708-CC40-43AA-9C9C-E3929BDB4580}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6960B708-CC40-43AA-9C9C-E3929BDB4580}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6960B708-CC40-43AA-9C9C-E3929BDB4580}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6960B708-CC40-43AA-9C9C-E3929BDB4580}.Release|Any CPU.Build.0 = Release|Any CPU
-		{31FCF691-A304-4969-9971-FE7E1D3F818A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31FCF691-A304-4969-9971-FE7E1D3F818A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{31FCF691-A304-4969-9971-FE7E1D3F818A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31FCF691-A304-4969-9971-FE7E1D3F818A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A77931B-C83D-4B91-8CE0-5F684BAEFBDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A77931B-C83D-4B91-8CE0-5F684BAEFBDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A77931B-C83D-4B91-8CE0-5F684BAEFBDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A77931B-C83D-4B91-8CE0-5F684BAEFBDC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38EE641A-7249-4729-AB5A-AFFF79E60881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38EE641A-7249-4729-AB5A-AFFF79E60881}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38EE641A-7249-4729-AB5A-AFFF79E60881}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38EE641A-7249-4729-AB5A-AFFF79E60881}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80E1C045-24E7-4919-9CAA-7A02001A449D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80E1C045-24E7-4919-9CAA-7A02001A449D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80E1C045-24E7-4919-9CAA-7A02001A449D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80E1C045-24E7-4919-9CAA-7A02001A449D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F690564B-EDA2-4A95-BE68-9BAAF81FE5A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F690564B-EDA2-4A95-BE68-9BAAF81FE5A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F690564B-EDA2-4A95-BE68-9BAAF81FE5A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F690564B-EDA2-4A95-BE68-9BAAF81FE5A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6BD206B-2BA7-435C-B777-A48FDBC0CCB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6BD206B-2BA7-435C-B777-A48FDBC0CCB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6BD206B-2BA7-435C-B777-A48FDBC0CCB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6BD206B-2BA7-435C-B777-A48FDBC0CCB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55295FF0-2C2D-4669-8904-01089AB625C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55295FF0-2C2D-4669-8904-01089AB625C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55295FF0-2C2D-4669-8904-01089AB625C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55295FF0-2C2D-4669-8904-01089AB625C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB13DED-0B76-4FAB-B466-6D33E6E8C252}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB13DED-0B76-4FAB-B466-6D33E6E8C252}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB13DED-0B76-4FAB-B466-6D33E6E8C252}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB13DED-0B76-4FAB-B466-6D33E6E8C252}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE82B3C5-F4B0-4784-8005-86CCCA224206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE82B3C5-F4B0-4784-8005-86CCCA224206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE82B3C5-F4B0-4784-8005-86CCCA224206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE82B3C5-F4B0-4784-8005-86CCCA224206}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8679FA01-D392-4A29-9322-0F80F7AF9735}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8679FA01-D392-4A29-9322-0F80F7AF9735}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8679FA01-D392-4A29-9322-0F80F7AF9735}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8679FA01-D392-4A29-9322-0F80F7AF9735}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

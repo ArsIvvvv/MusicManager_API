@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentResults;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using MusicMicroservice.Application.Common.Errors;
-using MusicMicroservice.Application.Common.Interfaces.CQRS;
 using MusicMicroservice.Application.Common.Interfaces.Persistance;
 using MusicMicroservice.Contracts.Responses.Executor;
 using MusicMicroservice.Contracts.Responses.Music;
@@ -14,7 +14,7 @@ using MusicMicroservice.Domain.Exceptions;
 
 namespace MusicMicroservice.Application.MusicService.Commands.Create;
 
-public class CreateMusicWithExecutorCommandHandler : ICommandHandler<CreateMusicWithExecutorCommand, MusicWithExecutorsResponse>
+public class CreateMusicWithExecutorCommandHandler : IRequestHandler<CreateMusicWithExecutorCommand, Result<MusicWithExecutorsResponse>>
 {
     private readonly IMusicRepository _musicRepository;
     private readonly ILogger<CreateMusicWithExecutorCommandHandler> _logger;
@@ -33,12 +33,13 @@ public class CreateMusicWithExecutorCommandHandler : ICommandHandler<CreateMusic
             if(command.Executors is not null && command.Executors?.Count > 0)
             {
                 var newExecutors = new List<Executor>();
-                foreach(var Executor in command.Executors)
+                foreach(var createExecutor in command.Executors)
                 {
-                    var newExecutor = Executor.Create(Guid.NewGuid(), 
-                    Executor.FirstName,
-                    Executor.LastName,
-                    Executor.Nickname);
+                    var newExecutor = Executor.Create(
+                    Guid.NewGuid(), 
+                    createExecutor.FirstName,
+                    createExecutor.LastName,
+                    createExecutor.Nickname);
                         
                     newExecutors.Add(newExecutor);
                 }

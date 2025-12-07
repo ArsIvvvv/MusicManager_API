@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using FluentResults;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using MusicMicroservice.Application.Common.Errors;
-using MusicMicroservice.Application.Common.Interfaces.CQRS;
 using MusicMicroservice.Application.Common.Interfaces.Persistance;
 using MusicMicroservice.Contracts.Responses.Executor;
 using MusicMicroservice.Contracts.Responses.Music;
@@ -13,7 +9,7 @@ using MusicMicroservice.Domain.Entities;
 
 namespace MusicMicroservice.Application.MusicService.Queries
 {
-    public class GetAllMusicWithExecutorQueryHandler : IQueryHandler<GetAllMusicWithExecutorQuery, Result<IEnumerable<MusicWithExecutorsResponse>>>
+    public class GetAllMusicWithExecutorQueryHandler : IRequestHandler<GetAllMusicWithExecutorQuery, Result<IEnumerable<MusicWithExecutorsResponse>>>
     {
         private readonly IMusicRepository _musicRepository;
         private readonly ILogger<GetAllMusicWithExecutorQueryHandler> _logger;
@@ -27,7 +23,8 @@ namespace MusicMicroservice.Application.MusicService.Queries
         {
             try
             {
-                var musics = await _musicRepository.GetAllAsync(true, cancellationToken);
+                var musics = await _musicRepository.GetAllAsync(true, false, cancellationToken);
+
                 
                 return Result.Ok(musics.Select (m => MapToResponseWithExecutors(m)));  
                 

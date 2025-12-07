@@ -5,4 +5,4 @@ using System.Threading.Tasks;
 
 namespace MusicMicroservice.Contracts.Requests.Music;
 
- public record CreateMusicRequest(string name, int year, string style, List<Guid> ExecutorIds);
+ public record CreateMusicRequest(string Name, int Year, string Style, List<Guid> ExecutorIds);

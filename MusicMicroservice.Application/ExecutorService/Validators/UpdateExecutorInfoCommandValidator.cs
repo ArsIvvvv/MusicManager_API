@@ -11,7 +11,7 @@ namespace MusicMicroservice.Application.ExecutorService.Validators
     {
         public UpdateExecutorInfoCommandValidator()
         {
-            RuleFor(e =>e.ExecutorId)
+            RuleFor(e =>e.Id)
             .NotEmpty()
             .WithMessage("The executor's Id must not be empty.");
 

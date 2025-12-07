@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -15,8 +16,22 @@ public class Music: BaseEntity<Guid>
     public int Year {get; private set;}
     public string Style {get; private set;} = string.Empty;
 
-    private readonly List<Executor> _executor= new();
-    public IReadOnlyCollection<Executor> Executors => _executor.AsReadOnly(); 
+    private readonly List<Executor> _executor = new();
+    public ICollection<Executor> Executors
+    {
+        get => _executor;
+        private set
+        {
+            if (value != null)
+            {
+                _executor.Clear();
+                _executor.AddRange(value);
+            }
+        }
+    }
+    
+    [NotMapped]
+    public IReadOnlyCollection<Executor> ExecutorsReadOnly => _executor.AsReadOnly(); 
 
     protected Music() {}
 

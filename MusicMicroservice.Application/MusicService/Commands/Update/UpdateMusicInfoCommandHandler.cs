@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentResults;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using MusicMicroservice.Application.Common.Errors;
-using MusicMicroservice.Application.Common.Interfaces.CQRS;
 using MusicMicroservice.Application.Common.Interfaces.Persistance;
 using MusicMicroservice.Application.Common.Interfaces.Persistance.Redis;
 using MusicMicroservice.Application.MusicService.Commands.Update;
 
 namespace MusicMicroservice.Application.MusicService.Commands.Update;
 
-public class UpdateMusicInfoCommandHandler : ICommandHandler<UpdateMusicInfoCommand>
+public class UpdateMusicInfoCommandHandler : IRequestHandler<UpdateMusicInfoCommand, Result>
 {
     private readonly IMusicRepository _musicRepository;
     private readonly ILogger<UpdateMusicInfoCommandHandler> _logger;

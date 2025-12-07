@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentResults;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using MusicMicroservice.Application.Common.Errors;
-using MusicMicroservice.Application.Common.Interfaces.CQRS;
 using MusicMicroservice.Application.Common.Interfaces.Persistance;
 using MusicMicroservice.Application.Common.Interfaces.Persistance.Redis;
 
 namespace MusicMicroservice.Application.MusicService.Commands.Delete;
 
-public class DeleteMusicCommandHandler : ICommandHandler<DeleteMusicCommand>
+public class DeleteMusicCommandHandler : IRequestHandler<DeleteMusicCommand, Result>
 {
     private readonly IMusicRepository _musicRepository;
     private readonly ILogger<DeleteMusicCommandHandler> _logger;
@@ -27,7 +27,8 @@ public class DeleteMusicCommandHandler : ICommandHandler<DeleteMusicCommand>
     {
         try
         {
-            var music = await _musicRepository.GetByIdAsync(command.Id, false, cancellationToken);    
+            var music = await _musicRepository.GetByIdAsync(command.Id, false, cancellationToken);  
+              
             if(music is null)
             {
                 return Result.Fail(new NotFoundError($"Music with id: {command.Id} not found"));

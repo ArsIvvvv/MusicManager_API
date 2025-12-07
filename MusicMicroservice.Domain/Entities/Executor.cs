@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using MusicMicroservice.Domain.Common;
@@ -9,18 +10,33 @@ namespace MusicMicroservice.Domain.Entities;
 
 public class Executor: BaseEntity<Guid>
 { 
-    public string FirstName {get; private set;}
-    public string LastName {get; private set;}
-    public string Nickname {get; private set;}
+    public string FirstName {get; private set;} = string.Empty;
+    public string LastName {get; private set;}= string.Empty;
+    public string Nickname {get; private set;}= string.Empty;
 
     private readonly List<Music> _musics = new();
-    public IReadOnlyCollection<Music> Musics => _musics.AsReadOnly(); 
+
+    public ICollection<Music> Musics
+    {
+        get => _musics;
+        private set
+        {
+            if (value != null)
+            {
+                _musics.Clear();
+                _musics.AddRange(value);
+            }
+        }
+    }
+    
+    [NotMapped]
+    public IReadOnlyCollection<Music> MusicsReadOnly => _musics.AsReadOnly(); 
 
     protected Executor() {}
 
     private Executor(Guid id,string firstName, string lastName, string nik)
     {
-        Id =id;
+        Id = id;
         FirstName = firstName;
         LastName = lastName;
         Nickname = nik;

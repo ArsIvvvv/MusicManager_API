@@ -6,4 +6,4 @@ using MusicMicroservice.Contracts.Requests.Executor;
 
 namespace MusicMicroservice.Contracts.Requests.Music;
 
-public record CreateMusicWithExecutorsRequest(string Name, int year, string style, List<CreateExecutorRequest> Executors);
+public record CreateMusicWithExecutorsRequest(string Name, int Year, string Style, List<CreateExecutorRequest> Executors);

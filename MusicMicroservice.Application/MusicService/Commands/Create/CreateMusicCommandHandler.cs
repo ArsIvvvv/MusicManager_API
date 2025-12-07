@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentResults;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using MusicMicroservice.Application.Common.Errors;
-using MusicMicroservice.Application.Common.Interfaces.CQRS;
 using MusicMicroservice.Application.Common.Interfaces.Persistance;
 using MusicMicroservice.Contracts.Responses.Music;
 using MusicMicroservice.Domain.Entities;
@@ -13,7 +13,7 @@ using MusicMicroservice.Domain.Exceptions;
 
 namespace MusicMicroservice.Application.MusicService.Commands.Create;
 
-public class CreateMusicCommandHandler : ICommandHandler<CreateMusicCommand, MusicResponse>
+public class CreateMusicCommandHandler : IRequestHandler<CreateMusicCommand, Result<MusicResponse>>
 {
     private readonly IMusicRepository _musicRepository;
     private readonly IExecutorRepository _ExecutorRepository;

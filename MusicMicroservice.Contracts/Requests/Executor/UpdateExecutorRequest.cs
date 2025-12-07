@@ -5,4 +5,4 @@ using System.Threading.Tasks;
 
 namespace MusicMicroservice.Contracts.Requests.Executor;
 
-public record UpdateExecutorRequest(Guid id, string FirstName, string LastName, string Nickname);
+public record UpdateExecutorRequest(Guid Id, string FirstName, string LastName, string Nickname);

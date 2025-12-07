@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentResults;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using MusicMicroservice.Application.Common.Errors;
-using MusicMicroservice.Application.Common.Interfaces.CQRS;
 using MusicMicroservice.Application.Common.Interfaces.Persistance;
 using MusicMicroservice.Application.Common.Interfaces.Persistance.Redis;
 
 namespace MusicMicroservice.Application.ExecutorService.Commands.Update;
 
-public class UpdateExecutorInfoCommandHandler : ICommandHandler<UpdateExecutorInfoCommand>
+public class UpdateExecutorInfoCommandHandler : IRequestHandler<UpdateExecutorInfoCommand, Result>
 {
     public readonly IExecutorRepository _ExecutorRepository;
     public readonly ILogger<UpdateExecutorInfoCommandHandler> _logger;
@@ -27,10 +27,10 @@ public class UpdateExecutorInfoCommandHandler : ICommandHandler<UpdateExecutorIn
     {
         try
         {
-            var Executor =  await _ExecutorRepository.GetByIdAsync(command.ExecutorId,false, cancellationToken);
+            var Executor =  await _ExecutorRepository.GetByIdAsync(command.Id,false, cancellationToken);
             if(Executor is null)
             {
-                return Result.Fail(new NotFoundError($"Executor with id: {command.ExecutorId} not found"));
+                return Result.Fail(new NotFoundError($"Executor with id: {command.Id} not found"));
             }
 
             Executor.ChangeFirstName(command.FirstName);
@@ -38,7 +38,7 @@ public class UpdateExecutorInfoCommandHandler : ICommandHandler<UpdateExecutorIn
             Executor.ChangeNickname(command.Nickname);
             
             await  _ExecutorRepository.UpdateAsync(Executor, cancellationToken);
-            await _cacheService.RemoveAsync($"Executor_{command.ExecutorId}");    
+            await _cacheService.RemoveAsync($"Executor_{command.Id}");    
 
             return Result.Ok();
         }

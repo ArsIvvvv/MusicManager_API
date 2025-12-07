@@ -15,7 +15,7 @@ namespace MusicMicroservice.Application.MusicService.Validators
             .NotEmpty()
             .WithMessage("Music Id is required");
 
-            RuleFor(x => x.ExecutorId)
+            RuleFor(x => x.ExecutorIds)
             .NotEmpty()
             .WithMessage("Executor Ids collection is required");
         }   

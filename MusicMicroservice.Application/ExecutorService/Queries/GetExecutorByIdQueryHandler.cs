@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FluentResults;
 using Microsoft.Extensions.Logging;
 using MusicMicroservice.Application.Common.Errors;
-using MusicMicroservice.Application.Common.Interfaces.CQRS;
+using MediatR;
 using MusicMicroservice.Application.Common.Interfaces.Persistance;
 using MusicMicroservice.Application.Common.Interfaces.Persistance.Redis;
 using MusicMicroservice.Contracts.Responses.Executor;
@@ -13,7 +13,7 @@ using MusicMicroservice.Domain.Entities;
 
 namespace MusicMicroservice.Application.ExecutorService.Queries
 {
-    public class GetExecutorByIdQueryHandler : IQueryHandler<GetExecutorByIdQuery, FluentResults.Result<Contracts.Responses.Executor.ExecutorResponse>>
+    public class GetExecutorByIdQueryHandler : IRequestHandler<GetExecutorByIdQuery, FluentResults.Result<Contracts.Responses.Executor.ExecutorResponse>>
     {
         public readonly IExecutorRepository _ExecutorRepository;
         public readonly ILogger<GetExecutorByIdQueryHandler> _logger;

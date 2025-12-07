@@ -4,12 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using FluentResults;
-using MusicMicroservice.Application.Common.Interfaces.CQRS;
-using ICommand = MusicMicroservice.Application.Common.Interfaces.CQRS.ICommand;
+using MediatR;
 
 namespace MusicMicroservice.Application.MusicService.Commands.Delete;
 
-public class DeleteMusicCommand: ICommand
+public class DeleteMusicCommand: IRequest<Result>
 {
     public Guid Id { get; init; }
 }

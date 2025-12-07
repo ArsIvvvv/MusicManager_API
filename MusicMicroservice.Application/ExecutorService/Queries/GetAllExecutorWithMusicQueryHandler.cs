@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FluentResults;
 using Microsoft.Extensions.Logging;
 using MusicMicroservice.Application.Common.Errors;
-using MusicMicroservice.Application.Common.Interfaces.CQRS;
+using MediatR;
 using MusicMicroservice.Application.Common.Interfaces.Persistance;
 using MusicMicroservice.Contracts.Responses.Executor;
 using MusicMicroservice.Contracts.Responses.Music;
@@ -13,7 +13,7 @@ using MusicMicroservice.Domain.Entities;
 
 namespace MusicMicroservice.Application.ExecutorService.Queries
 {
-    public class GetAllExecutorWithMusicQueryHandler : IQueryHandler<GetAllExecutorWithMusicQuery, Result<IEnumerable<ExecutorWithMusicResponse>>>
+    public class GetAllExecutorWithMusicQueryHandler : IRequestHandler<GetAllExecutorWithMusicQuery, Result<IEnumerable<ExecutorWithMusicResponse>>>
     {
         private readonly IExecutorRepository _ExecutorRepository;
 

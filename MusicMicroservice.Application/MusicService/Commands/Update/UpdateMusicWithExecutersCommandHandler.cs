@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentResults;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using MusicMicroservice.Application.Common.Errors;
-using MusicMicroservice.Application.Common.Interfaces.CQRS;
 using MusicMicroservice.Application.Common.Interfaces.Persistance;
 
 namespace MusicMicroservice.Application.MusicService.Commands.Update;
 
-public class UpdateMusicWithExecutorsCommandHandler : ICommandHandler<UpdateMusicWithExecutorsCommand>
+public class UpdateMusicWithExecutorsCommandHandler : IRequestHandler<UpdateMusicWithExecutorsCommand, Result>
 {
     private readonly IMusicRepository _musicRepository;
 
     private readonly IExecutorRepository _ExecutorRepository;
+
     private readonly ILogger<UpdateMusicWithExecutorsCommandHandler> _logger;
 
     public UpdateMusicWithExecutorsCommandHandler(IMusicRepository musicRepository, IExecutorRepository ExecutorRepository, ILogger<UpdateMusicWithExecutorsCommandHandler> logger)
@@ -23,6 +24,7 @@ public class UpdateMusicWithExecutorsCommandHandler : ICommandHandler<UpdateMusi
         _ExecutorRepository = ExecutorRepository;
         _logger = logger;
     }
+    
     public async Task<Result> Handle(UpdateMusicWithExecutorsCommand command, CancellationToken cancellationToken)
     {
         try
@@ -31,14 +33,14 @@ public class UpdateMusicWithExecutorsCommandHandler : ICommandHandler<UpdateMusi
             if (music is null)
                 return Result.Fail(new NotFoundError($"Music was not found."));
 
-            var existingExecutors = await _ExecutorRepository.GetRangeExecutorAsync(command.ExecutorId, cancellationToken);
+            var existingExecutors = await _ExecutorRepository.GetRangeExecutorAsync(command.ExecutorIds, cancellationToken);
             if (!existingExecutors.Any())
                 return Result.Fail(new NotFoundError($"All Executors with ID not found."));
 
-            if (existingExecutors.Count() != command.ExecutorId.Count)
+            if (existingExecutors.Count() != command.ExecutorIds.Count)
             {
                 var existingExecutorsIds = existingExecutors.Select(a => a.Id);
-                var missingExecutorsIds = command.ExecutorId.Except(existingExecutorsIds);
+                var missingExecutorsIds = command.ExecutorIds.Except(existingExecutorsIds);
 
                 return Result.Fail(new NotFoundError("One or more authors were not found.")
                 .WithMetadata("Missing Ids", missingExecutorsIds));

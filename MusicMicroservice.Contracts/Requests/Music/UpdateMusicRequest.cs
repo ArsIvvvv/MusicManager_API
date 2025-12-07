@@ -5,4 +5,4 @@ using System.Threading.Tasks;
 
 namespace MusicMicroservice.Contracts.Requests.Music;
 
-public record UpdateMusicRequest(Guid id, string Name, int year, string style);
+public record UpdateMusicRequest(Guid Id, string Name, int Year, string Style);

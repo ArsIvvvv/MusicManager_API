@@ -11,7 +11,7 @@ namespace MusicMicroservice.Infrastructure.Data.Configurations;
 public class ExecutorConfiguration: IEntityTypeConfiguration<Executor>
 {
     public void Configure(EntityTypeBuilder<Executor> builder)
-{
+    {
     builder.ToTable("Executors");
 
     builder.HasKey(b => b.Id);
@@ -27,5 +27,6 @@ public class ExecutorConfiguration: IEntityTypeConfiguration<Executor>
     builder.Property(b => b.Nickname)
         .IsRequired()
         .HasMaxLength(200);    
-}
+
+    }
 }

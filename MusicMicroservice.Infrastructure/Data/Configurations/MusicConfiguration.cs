@@ -28,7 +28,7 @@ public void Configure(EntityTypeBuilder<Music> builder)
         .UsingEntity<Dictionary<string, object>>(
         "MusicExecutors",
         r => r.HasOne<Executor>().WithMany().HasForeignKey("ExecutorId").OnDelete(DeleteBehavior.Restrict),
-        l => l.HasOne<Music>().WithMany().HasForeignKey("MusicId").OnDelete(DeleteBehavior.Restrict)
+        l => l.HasOne<Music>().WithMany().HasForeignKey("MusicId").OnDelete(DeleteBehavior.Cascade)
         );
 }
 }
