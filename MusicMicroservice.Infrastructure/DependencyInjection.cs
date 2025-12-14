@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MusicMicroservice.Application.Common.Interfaces.Persistance;
 using MusicMicroservice.Application.Common.Interfaces.Persistance.Redis;
+using MusicMicroservice.Domain.Entities.Identity;
 using MusicMicroservice.Infrastructure.Data;
 using MusicMicroservice.Infrastructure.Data.Cache;
 using MusicMicroservice.Infrastructure.Data.Repositories;
@@ -18,6 +20,8 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         AddDbContext(services, configuration);
+
+        AddIdentity(services);
 
         AddEfCoreRepositories(services);
         
@@ -57,5 +61,13 @@ public static class DependencyInjection
         });
 
         services.AddScoped<ICacheService, RedisDistributedCacheService>();
+    }
+
+    private static void AddIdentity(IServiceCollection services)
+    {
+        services.AddIdentity<User, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
+    
     }
 }

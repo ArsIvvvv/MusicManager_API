@@ -13,21 +13,28 @@ namespace MusicMicroservice.Application.ExecutorService.Commands.Delete;
 
 public class DeleteExecutorCommandHandler : IRequestHandler<DeleteExecutorCommand, Result>
 {
-    public readonly IExecutorRepository _ExecutorRepository;
+    public readonly IExecutorRepository _executorRepository;
     public readonly ILogger<DeleteExecutorCommandHandler> _logger;
     public readonly ICacheService _cacheService;
+
+    public DeleteExecutorCommandHandler(IExecutorRepository executorRepository, ILogger<DeleteExecutorCommandHandler> logger, ICacheService cache)
+    {
+        _executorRepository = executorRepository;
+        _logger = logger;
+        _cacheService = cache;
+    }
     
     public async Task<Result> Handle(DeleteExecutorCommand command, CancellationToken cancellationToken)
     {
         try
         {
-            var Executor = await _ExecutorRepository.GetByIdAsync(command.Id, false, cancellationToken);    
+            var Executor = await _executorRepository.GetByIdAsync(command.Id, false, cancellationToken);    
             if(Executor is null)
             {
                 return Result.Fail(new NotFoundError($"Executor with id: {command.Id} not found"));
             }
 
-            await _ExecutorRepository.DeleteAsync(Executor, cancellationToken);
+            await _executorRepository.DeleteAsync(Executor, cancellationToken);
 
             await _cacheService.RemoveAsync($"Executor_{command.Id}");
 

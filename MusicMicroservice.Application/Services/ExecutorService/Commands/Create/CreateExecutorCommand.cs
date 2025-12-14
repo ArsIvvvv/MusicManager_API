@@ -11,8 +11,8 @@ namespace MusicMicroservice.Application.ExecutorService.Commands.Create;
 
 public class CreateExecutorCommand: IRequest<Result<ExecutorResponse>>
 {
-    public string FirstName { get; init; }
-    public string LastName { get; init; }
-    public string Nickname { get; init; }
+    public string FirstName { get; init; } = string.Empty;
+    public string LastName { get; init; } = string.Empty;
+    public string Nickname { get; init; } = string.Empty;
 
 }
