@@ -9,12 +9,15 @@ using FluentValidation.AspNetCore;
 using MusicMicroservice.Application;
 using MusicMicroservice.Infrastructure;
 using Microsoft.OpenApi;
+using MusicMicroservice.Application.Common.Settings;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
+
+builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("JwtSettings"));
 
 builder.Services.AddHealthChecks();
 builder.Services.AddControllers();
@@ -32,6 +35,7 @@ builder.Services.AddSwaggerGen(options =>
             Name = "Support",
         },
     });
+
 });
 
 
