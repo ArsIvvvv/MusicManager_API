@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentResults;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MusicMicroservice.Application.MusicService.Commands.Delete;
 using MusicMicroservice.Application.MusicService.Queries;
@@ -14,8 +15,8 @@ using MusicMicroservice.Music.API.Map.Music;
 
 namespace MusicMicroservice.Music.API.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class MusicController: BaseController
     {
         private readonly ILogger<MusicController> _logger;
@@ -44,7 +45,8 @@ namespace MusicMicroservice.Music.API.Controllers
         }
 
         [HttpPost("create-music")]
-        public async Task<IActionResult> CreateMusicAsync(CreateMusicRequest request,CancellationToken cancellationToken)
+        [Authorize(Policy = "OlderThan18")]
+        public async Task<IActionResult> CreateMusicAsync([FromBody]CreateMusicRequest request,CancellationToken cancellationToken)
         {
             var command = request.ToCommandCreateMusic();
             var result = await _mediator.Send(command, cancellationToken);
@@ -53,7 +55,7 @@ namespace MusicMicroservice.Music.API.Controllers
         }
 
         [HttpPost("create-music-with-executors")]
-        public async Task<IActionResult> CreateMusicWithExecutorsAsync(CreateMusicWithExecutorsRequest request,CancellationToken cancellationToken)
+        public async Task<IActionResult> CreateMusicWithExecutorsAsync([FromBody]CreateMusicWithExecutorsRequest request,CancellationToken cancellationToken)
         {
             var command = request.ToCommandCreateMusicWithExecutors();
             var result = await _mediator.Send(command, cancellationToken);
@@ -62,7 +64,7 @@ namespace MusicMicroservice.Music.API.Controllers
         }
 
         [HttpPut("update-music")]
-        public async Task<IActionResult> UpdateMusicInfoAsync(UpdateMusicRequest request,CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateMusicInfoAsync([FromBody]UpdateMusicRequest request,CancellationToken cancellationToken)
         {
             var command = request.ToCommandUpdateMusicInfo();
             var result = await _mediator.Send(command, cancellationToken);
@@ -71,7 +73,7 @@ namespace MusicMicroservice.Music.API.Controllers
         }
 
         [HttpPut("update-music-with-executors")]
-        public async Task<IActionResult> UpdateMusicWithExecutorsAsync(UpdateMusicWithExecutorsRequest request,CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateMusicWithExecutorsAsync([FromBody]UpdateMusicWithExecutorsRequest request,CancellationToken cancellationToken)
         {
             var command = request.ToCommandUpdateMusicWithExecutors();
             var result = await _mediator.Send(command, cancellationToken);
@@ -80,6 +82,7 @@ namespace MusicMicroservice.Music.API.Controllers
         }
 
         [HttpDelete("delete-music-{id}")]
+         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteMusicsAsync([FromRoute] Guid id,CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(new DeleteMusicCommand{Id = id}, cancellationToken);

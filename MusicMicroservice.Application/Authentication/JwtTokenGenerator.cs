@@ -27,15 +27,20 @@ namespace MusicMicroservice.Application.Authentication
         
         public async Task<string> GenerateToken(User user)
         {
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+
             var claim = new List<Claim>
             {
                 new (ClaimTypes.NameIdentifier, user.Id),
-                new (ClaimTypes.Name, user.UserName),
-                new (ClaimTypes.Email, user.Email),
+                new (ClaimTypes.Name, user.UserName!),
+                new (ClaimTypes.Email, user.Email!),
                 new (ClaimTypes.DateOfBirth, user.DateOfBirth.ToString("yyyy-MM-dd")    )
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret       ));
+            claim.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
             var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
 
