@@ -8,30 +8,24 @@ using MusicMicroservice.MusicRating.Domain.Exceptions;
 
 namespace MusicMicroservice.MusicRating.Domain.MongoEntities
 {
-    public class MusicRating
+    public class MusicRatingReview
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.String)]
         public Guid Id { get; private set; }
 
-        [BsonRepresentation(BsonType.String)]
         public Guid MusicId { get; private set; }
 
-        [BsonElement("rating")]
         public int Rating { get; private set; }
 
-        [BsonElement("createdAt")]
         public DateTime CreatedAt { get; private set; }
 
-        [BsonConstructor]
-        private MusicRating() { }
+        private MusicRatingReview() { }
 
-        public static MusicRating Create(Guid musicId, int rating)
+        public static MusicRatingReview Create(Guid musicId, int rating)
         {
             if (rating < 0 || rating > 5)
                 throw new MongoEntityException("Rating must be between 0 and 5.");
 
-            return new MusicRating
+            return new MusicRatingReview
             {
                 Id = Guid.NewGuid(),
                 MusicId = musicId,

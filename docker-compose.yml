@@ -27,10 +27,26 @@ services:
       - redis_data:/data
     networks:
       - app_network
+    
+  mongodb:
+    image: mongo:7.0
+    container_name: MusicMicroservices-MongoContainer
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: MusicRatingMicroservicesDB
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - default-net
+
+      
 
 volumes:
   postgres_data:
   redis_data:
+  mongo-data:
 
 networks:
   app_network:
