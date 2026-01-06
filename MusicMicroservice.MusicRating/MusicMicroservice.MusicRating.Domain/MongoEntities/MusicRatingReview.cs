@@ -10,14 +10,20 @@ namespace MusicMicroservice.MusicRating.Domain.MongoEntities
 {
     public class MusicRatingReview
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.String)]
         public Guid Id { get; private set; }
 
+        [BsonRepresentation(BsonType.String)]
         public Guid MusicId { get; private set; }
 
+        [BsonElement("rating")]
         public int Rating { get; private set; }
 
+        [BsonElement("createdAt")]
         public DateTime CreatedAt { get; private set; }
 
+        [BsonConstructor]
         private MusicRatingReview() { }
 
         public static MusicRatingReview Create(Guid musicId, int rating)

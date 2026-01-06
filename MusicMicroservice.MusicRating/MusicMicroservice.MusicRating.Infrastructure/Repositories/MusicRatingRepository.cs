@@ -22,7 +22,7 @@ namespace MusicMicroservice.MusicRating.Infrastructure.Repositories
             _settings = options.Value;
 
             _collection = mongoClient
-                .GetDatabase(_settings.MongoDatabaseName)
+                .GetDatabase(_settings.DatabaseName)
                 .GetCollection<MusicRatingReview>("musicRatings");
         }
         public async Task AddAsync(MusicRatingReview rating, CancellationToken cancellationToken = default)
