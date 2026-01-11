@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using FluentResults;
 using MediatR;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MusicMicroservice.Application.MusicService.Commands.Delete;
 using MusicMicroservice.Application.MusicService.Queries;
+using MusicMicroservice.Application.Services.MusicService.Queries;
 using MusicMicroservice.Contracts.Requests.Music;
 using MusicMicroservice.Contracts.Responses.Music;
 using MusicMicroservice.Music.API.Controllers.Common;
@@ -27,6 +29,23 @@ namespace MusicMicroservice.Music.API.Controllers
             _logger = logger;
             _mediator = mediator;
         }   
+
+        [HttpGet("give-my-info")]
+        public IActionResult GetUserInfoFromToken()
+        {
+            _logger.LogInformation("Entry in GetUserInfoFromToken");
+
+            var info = new
+            {
+                Id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                UserName = User.Identity?.Name,
+                Email = User.FindFirst(ClaimTypes.Email)?.Value,
+                DateOfBirth = User.FindFirst(ClaimTypes.DateOfBirth)?.Value,
+                Roles = User.FindAll(ClaimTypes.Role).Select(c => c.Value).ToList()
+            };
+
+            return Ok(info);
+        }
 
         [HttpGet("all-music")]
         public async Task<IActionResult> GetAllMusicsAsync(CancellationToken cancellationToken)
@@ -82,10 +101,18 @@ namespace MusicMicroservice.Music.API.Controllers
         }
 
         [HttpDelete("delete-music-{id}")]
-         [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteMusicsAsync([FromRoute] Guid id,CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(new DeleteMusicCommand{Id = id}, cancellationToken);
+
+            return HandleResult(result);
+        }
+
+        [HttpGet("all-music-ratings")]
+        public async Task<IActionResult> GetAllMusicRatingsAsync(CancellationToken cancellationToken)
+        {
+            var result = await _mediator.Send(new GetAllDetailMusicQuery(), cancellationToken);
 
             return HandleResult(result);
         }

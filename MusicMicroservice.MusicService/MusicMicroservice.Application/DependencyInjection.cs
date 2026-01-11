@@ -16,7 +16,9 @@ using MusicMicroservice.Application.Authorization.Handlers;
 using MusicMicroservice.Application.Authorization.Requirements;
 using MusicMicroservice.Application.Common.Behaviors;
 using MusicMicroservice.Application.Common.Interfaces.Authentication;
+using MusicMicroservice.Application.Common.Interfaces.HttpService;
 using MusicMicroservice.Application.Common.Interfaces.Persistance.Identity;
+using MusicMicroservice.Application.HttpService;
 using MusicMicroservice.Application.Services.Identity;
 
 namespace MusicMicroservice.Application
@@ -26,6 +28,12 @@ namespace MusicMicroservice.Application
         public static IServiceCollection AddApplication(this IServiceCollection services,  IConfiguration configuration)
         {
             AddMediatR(services);
+
+            services.AddHttpClient<IMusicRatingHttpService, MusicRatingHttpService>(client =>
+            {
+                client.BaseAddress = new Uri("http://localhost:5097"); 
+                client.Timeout = TimeSpan.FromSeconds(10);
+            });
 
             AddAuthentication(services, configuration);
             AddAuthorization(services);

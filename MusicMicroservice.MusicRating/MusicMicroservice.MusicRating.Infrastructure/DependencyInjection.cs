@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using MusicMicroservice.MusicRating.Application.Common.Interfaces.Persistence;
 using MusicMicroservice.MusicRating.Infrastructure.Repositories;
 using MongoDB.Driver;
+using MusicMicroservice.MusicRating.Infrastructure.Background;
 
 namespace MusicMicroservice.MusicRating.Infrastructure
 {
@@ -15,8 +16,12 @@ namespace MusicMicroservice.MusicRating.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             AddMongoDb(services, configuration);
-            
+
+            AddRedisCaching(services, configuration);
+
             AddRepositories(services);
+
+            services.AddHostedService<RatingCountBackgroundService>();
 
             return services;
         }
@@ -32,6 +37,20 @@ namespace MusicMicroservice.MusicRating.Infrastructure
             var mongoDatabaseName = configuration["Mongo:DatabaseName"];
 
             services.AddSingleton<IMongoClient>(new MongoClient(mongoConnectionString));
+        }
+        private static void AddRedisCaching(IServiceCollection services, IConfiguration configuration)
+        {
+            // Получение настроек Redis из конфигурации
+            var redisConnectionString = configuration["Redis:RedisConnectionString"];
+            var instanceName = configuration["Redis:InstanceName"];
+
+            // Регистрация кэша Redis
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = redisConnectionString;
+                options.InstanceName = instanceName;
+            });
+
         }
     }
 }
