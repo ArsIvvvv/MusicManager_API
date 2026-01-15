@@ -8,6 +8,7 @@ using MusicMicroservice.MusicRating.Application.Common.Interfaces.Persistence;
 using MusicMicroservice.MusicRating.Infrastructure.Repositories;
 using MongoDB.Driver;
 using MusicMicroservice.MusicRating.Infrastructure.Background;
+using MusicMicroservice.MusicRating.Infrastructure.Configuration;
 
 namespace MusicMicroservice.MusicRating.Infrastructure
 {

@@ -1,11 +1,14 @@
 using MusicMicroservice.MusicRating.Application;
 using MusicMicroservice.MusicRating.Application.Common.Settings;
 using MusicMicroservice.MusicRating.Infrastructure;
+using MusicMicroservice.MusicRating.Infrastructure.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
- builder.Services.AddInfrastructure(builder.Configuration);
- builder.Services.AddApplication();
+MusicRatingConfiguration.Configure();
+
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddApplication();
 
 builder.Services.Configure<MongoSettings>(builder.Configuration.GetSection("Mongo"));
 

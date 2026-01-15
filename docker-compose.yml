@@ -34,6 +34,8 @@ services:
     ports:
       - "27017:27017"
     environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: sdasdaf123
       MONGO_INITDB_DATABASE: MusicRatingMicroservicesDB
     volumes:
       - mongo-data:/data/db

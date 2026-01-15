@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using FluentValidation;
 using MediatR;
@@ -20,6 +22,13 @@ using MusicMicroservice.Application.Common.Interfaces.HttpService;
 using MusicMicroservice.Application.Common.Interfaces.Persistance.Identity;
 using MusicMicroservice.Application.HttpService;
 using MusicMicroservice.Application.Services.Identity;
+using MusicMicroservice.Contracts.Responses.MusicRatingDetails;
+using MusicMicroservice.Contracts.Responses.Rating;
+using MusicMicroservice.Domain.Entities;
+using Polly;
+using Polly.Contrib.Simmy;
+using Polly.Extensions.Http;
+using Polly.Timeout;
 
 namespace MusicMicroservice.Application
 {
@@ -27,13 +36,9 @@ namespace MusicMicroservice.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services,  IConfiguration configuration)
         {
-            AddMediatR(services);
 
-            services.AddHttpClient<IMusicRatingHttpService, MusicRatingHttpService>(client =>
-            {
-                client.BaseAddress = new Uri("http://localhost:5097"); 
-                client.Timeout = TimeSpan.FromSeconds(10);
-            });
+            AddHttpClientFactory(services);
+            AddMediatR(services);   
 
             AddAuthentication(services, configuration);
             AddAuthorization(services);
@@ -85,6 +90,55 @@ namespace MusicMicroservice.Application
             });
 
             services.AddSingleton<IAuthorizationHandler, AgeHandler>();
+        }
+
+        private static void AddHttpClientFactory(IServiceCollection services)
+        {
+            var fallback = Policy<HttpResponseMessage>
+                .Handle<Polly.CircuitBreaker.BrokenCircuitException>()
+                .FallbackAsync(fallbackAction: async (ct) =>
+                {
+                    var fallbackReview = new MusicRatingDetailsResponse(new List<MusicRatingReviewResponse>(),"empty");
+
+                    var fallbackResponse = new HttpResponseMessage(HttpStatusCode.OK)
+                    {
+                        Content = new StringContent(JsonSerializer.Serialize(new List<MusicRatingDetailsResponse> { fallbackReview }), Encoding.UTF8, "application/json")
+                    };
+
+                    return await Task.FromResult(fallbackResponse);
+                },
+                onFallbackAsync: (ex) =>
+                {
+                    Console.WriteLine($"Fallback triggered: {ex.Exception.Message}");
+                    return Task.CompletedTask;
+                });
+
+            var circuitBreakerPolicy = HttpPolicyExtensions
+                .HandleTransientHttpError()
+                .CircuitBreakerAsync(5, TimeSpan.FromSeconds(30));
+
+            var retryPolicy = HttpPolicyExtensions
+                .HandleTransientHttpError()
+                .WaitAndRetryAsync(
+                    retryCount: 3,
+                    sleepDurationProvider: attempt => TimeSpan.FromSeconds(Math.Pow(2, attempt)));
+
+            var timeoutPolicy = Policy
+                .TimeoutAsync<HttpResponseMessage>(TimeSpan.FromSeconds(3), TimeoutStrategy.Optimistic);
+
+            var chaosPolicy = MonkeyPolicy.InjectFaultAsync<HttpResponseMessage>(
+                injectionRate: 0.2,
+                fault: new HttpRequestException("Chaooooosss! (20%)"),
+                enabled: () => true
+                );
+
+            var policyWrap = Policy.WrapAsync(fallback, circuitBreakerPolicy, retryPolicy, timeoutPolicy, chaosPolicy);
+
+             services.AddHttpClient<IMusicRatingHttpService, MusicRatingHttpService>(client =>
+            {
+                client.BaseAddress = new Uri("http://localhost:5097"); 
+            })
+            .AddPolicyHandler(policyWrap);
         }
         
     }
