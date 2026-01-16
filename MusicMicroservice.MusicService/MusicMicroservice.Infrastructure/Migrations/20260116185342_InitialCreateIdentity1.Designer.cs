@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MusicMicroservice.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251217171028_InitialCreateIdentity")]
-    partial class InitialCreateIdentity
+    [Migration("20260116185342_InitialCreateIdentity1")]
+    partial class InitialCreateIdentity1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -350,7 +350,7 @@ namespace MusicMicroservice.Infrastructure.Migrations
                     b.HasOne("MusicMicroservice.Domain.Entities.Music", null)
                         .WithMany()
                         .HasForeignKey("MusicId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

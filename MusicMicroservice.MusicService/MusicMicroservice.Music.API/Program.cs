@@ -11,6 +11,7 @@ using MusicMicroservice.Infrastructure;
 using Microsoft.OpenApi;
 using MusicMicroservice.Application.Common.Settings;
 using Microsoft.OpenApi.Models;
+using MusicMicroservice.Music.API.Extensions;
 
 
 
@@ -72,6 +73,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.InitializeApplication();
 
 app.UseMiddleware<RequestTimingMiddleware>();
 

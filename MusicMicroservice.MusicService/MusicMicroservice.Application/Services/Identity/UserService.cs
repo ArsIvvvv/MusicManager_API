@@ -43,7 +43,7 @@ namespace MusicMicroservice.Application.Services.Identity
 
             var token = await _jwtTokenGenerator.GenerateToken(user);
 
-            return Result.Ok(new UserResponse(user.Email!, user.DateOfBirth,token));
+            return Result.Ok(new UserResponse(user.Email!, user.DateOfBirth, token));
         }
 
         public async Task<Result<IdentityResult>> RegisterAsync(RegisterUserRequest request, CancellationToken cancellationToken = default)
@@ -60,7 +60,7 @@ namespace MusicMicroservice.Application.Services.Identity
             {
                 
                 var errors = identityResult.Errors.Select(e => e.Description);
-                var errorsMessage =string.Join(";",errors);
+                var errorsMessage = string.Join(";",errors);
 
                 return Result.Fail(new ValidationError(errorsMessage)); 
             }

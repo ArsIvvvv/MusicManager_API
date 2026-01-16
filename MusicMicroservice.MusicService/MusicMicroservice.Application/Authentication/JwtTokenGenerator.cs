@@ -30,15 +30,16 @@ namespace MusicMicroservice.Application.Authentication
 
             var userRoles = await _userManager.GetRolesAsync(user);
 
-            var claim = new List<Claim>
+            var claims = new List<Claim>
             {
                 new (ClaimTypes.NameIdentifier, user.Id),
                 new (ClaimTypes.Name, user.UserName!),
                 new (ClaimTypes.Email, user.Email!),
-                new (ClaimTypes.DateOfBirth, user.DateOfBirth.ToString("yyyy-MM-dd")    )
+                new (ClaimTypes.DateOfBirth, user.DateOfBirth.ToString("yyyy-MM-dd")),
+                
             };
 
-            claim.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
+            claims.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Secret));
             var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -47,7 +48,7 @@ namespace MusicMicroservice.Application.Authentication
             var token = new JwtSecurityToken(
                 issuer: _jwtSettings.Issuer,
                 audience: _jwtSettings.Audience,
-                claims: claim,
+                claims: claims,
                 expires: DateTime.UtcNow.AddMinutes(_jwtSettings.ExpiryMinutes),
                 signingCredentials: cred
             );

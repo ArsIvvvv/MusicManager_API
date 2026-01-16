@@ -13,7 +13,7 @@ using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute;
 namespace MusicMicroservice.Music.API.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles="Admin")]
     public class AdminController: BaseController
     {
         private readonly IRoleService _roleService;

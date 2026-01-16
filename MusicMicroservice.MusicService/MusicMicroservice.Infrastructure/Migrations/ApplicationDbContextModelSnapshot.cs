@@ -347,7 +347,7 @@ namespace MusicMicroservice.Infrastructure.Migrations
                     b.HasOne("MusicMicroservice.Domain.Entities.Music", null)
                         .WithMany()
                         .HasForeignKey("MusicId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 #pragma warning restore 612, 618

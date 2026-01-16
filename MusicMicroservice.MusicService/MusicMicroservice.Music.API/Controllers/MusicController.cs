@@ -17,6 +17,7 @@ using MusicMicroservice.Music.API.Map.Music;
 
 namespace MusicMicroservice.Music.API.Controllers
 {
+    
     [Route("api/[controller]")]
     [Authorize]
     public class MusicController: BaseController
