@@ -7,11 +7,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MusicMicroservice.Application.Common.Interfaces.Persistance;
+using MusicMicroservice.Application.Common.Interfaces.Persistance.Kafka;
 using MusicMicroservice.Application.Common.Interfaces.Persistance.Redis;
+using MusicMicroservice.Contracts.Responses.Music;
+using MusicMicroservice.Domain.Entities;
 using MusicMicroservice.Domain.Entities.Identity;
 using MusicMicroservice.Infrastructure.Data;
 using MusicMicroservice.Infrastructure.Data.Cache;
 using MusicMicroservice.Infrastructure.Data.Repositories;
+using MusicMicroservice.Infrastructure.Kafka;
 
 namespace MusicMicroservice.Infrastructure;
 
@@ -26,6 +30,8 @@ public static class DependencyInjection
         AddEfCoreRepositories(services);
         
         AddRedisCaching(services, configuration);
+
+        AddKafkaProducer<MusicResponse>(services);
 
         return services;
     }
@@ -69,5 +75,10 @@ public static class DependencyInjection
         .AddEntityFrameworkStores<ApplicationDbContext>()
         .AddDefaultTokenProviders();
     
+    }
+
+    private static void AddKafkaProducer<TMessage>(IServiceCollection services)
+    {
+        services.AddSingleton<IKafkaProducer, KafkaProducer>();
     }
 }
