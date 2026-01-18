@@ -7,6 +7,7 @@ using FluentResults;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MusicMicroservice.Application.Common.Interfaces.Persistance.Kafka;
 using MusicMicroservice.Application.MusicService.Commands.Delete;
 using MusicMicroservice.Application.MusicService.Queries;
 using MusicMicroservice.Application.Services.MusicService.Queries;
@@ -25,10 +26,13 @@ namespace MusicMicroservice.Music.API.Controllers
         private readonly ILogger<MusicController> _logger;
         private readonly IMediator _mediator;
 
-        public MusicController(ILogger<MusicController> logger, IMediator mediator)
+        private readonly IKafkaProducer _kafkaProducer;
+
+        public MusicController(ILogger<MusicController> logger, IMediator mediator, IKafkaProducer kafkaProducer)
         {
             _logger = logger;
             _mediator = mediator;
+            _kafkaProducer = kafkaProducer;
         }   
 
         [HttpGet("give-my-info")]
@@ -52,6 +56,13 @@ namespace MusicMicroservice.Music.API.Controllers
         public async Task<IActionResult> GetAllMusicsAsync(CancellationToken cancellationToken)
         {
             var result = await _mediator.Send(new GetAllMusicQuery(), cancellationToken);
+            if(result.IsSuccess)
+            {
+                foreach (var music in result.Value)
+                {
+                    await _kafkaProducer.ProduceAsync<MusicResponse>(music, cancellationToken);
+                }
+            }
 
             return HandleResult(result);
         }

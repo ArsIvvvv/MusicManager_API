@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMicroservice.Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicMicroservice.Music.API", "MusicMicroservice.MusicService\MusicMicroservice.Music.API\MusicMicroservice.Music.API.csproj", "{BFC76348-8BC4-4966-B117-410E5C502B15}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MusicMicroservice.AnalyticsKafkaWorkerService", "MusicMicroservice.AnalyticsKafkaWorkerService", "{E9F87BA9-3A54-4FC2-A349-31722E377D31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnalyticKafkaService", "MusicMicroservice.AnalyticsKafkaWorkerService\AnalyticKafkaService\AnalyticKafkaService.csproj", "{8B1CA357-5CA1-4B7C-AB1C-3B09D803FD32}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +83,10 @@ Global
 		{BFC76348-8BC4-4966-B117-410E5C502B15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFC76348-8BC4-4966-B117-410E5C502B15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFC76348-8BC4-4966-B117-410E5C502B15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B1CA357-5CA1-4B7C-AB1C-3B09D803FD32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B1CA357-5CA1-4B7C-AB1C-3B09D803FD32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B1CA357-5CA1-4B7C-AB1C-3B09D803FD32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B1CA357-5CA1-4B7C-AB1C-3B09D803FD32}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,5 +103,6 @@ Global
 		{1E5CF31B-0E99-4DB2-8A58-8E4DE4F89BB9} = {5C0CAAE0-32BE-4724-BCAA-B055964A57C2}
 		{058CEF63-9262-4161-AEB7-C6C60F480B1E} = {5C0CAAE0-32BE-4724-BCAA-B055964A57C2}
 		{BFC76348-8BC4-4966-B117-410E5C502B15} = {5C0CAAE0-32BE-4724-BCAA-B055964A57C2}
+		{8B1CA357-5CA1-4B7C-AB1C-3B09D803FD32} = {E9F87BA9-3A54-4FC2-A349-31722E377D31}
 	EndGlobalSection
 EndGlobal

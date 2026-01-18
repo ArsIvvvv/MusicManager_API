@@ -1,3 +1,4 @@
+version: "3.9"
 
 services:
   postgres:
@@ -14,7 +15,6 @@ services:
     networks:
       - app_network
     
-
   redis:
     image: redis:7-alpine
     container_name: Redis-MusicMicroservice
@@ -42,9 +42,20 @@ services:
     networks:
       - app_network
 
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.3.0
+    container_name: MusicMicroservices-ZookeeperContainer
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+    networks:
+      - app_network
+
   kafka:
     image: confluentinc/cp-kafka:7.3.0
-    container_name: TechcoreMicroservices-KafkaContainer
+    container_name: MusicMicroservices-KafkaContainer
     depends_on:
       - zookeeper
     ports:
@@ -53,16 +64,29 @@ services:
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka:9093
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT_INTERNAL
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
       KAFKA_DELETE_TOPIC_ENABLE: "true"
     networks:
-      - default-net
+      - app_network
 
-      
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    container_name: MusicMicroservices-KafkaUI
+    depends_on:
+      - kafka
+    ports:
+      - "8080:8080"
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+    networks:
+      - app_network
+
 volumes:
   postgres_data:
   redis_data:
