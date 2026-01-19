@@ -13,4 +13,8 @@
     <PackageReference Include="MongoDB.Driver" Version="3.6.0" />
     <PackageReference Include="System.Text.Json" Version="10.0.2" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../MusicMicroservice.MusicService/MusicMicroservice.Contracts/MusicMicroservice.Contracts.csproj" />
+  </ItemGroup>
 </Project>

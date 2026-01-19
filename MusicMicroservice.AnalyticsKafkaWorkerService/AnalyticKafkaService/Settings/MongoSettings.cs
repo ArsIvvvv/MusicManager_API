@@ -9,7 +9,7 @@ namespace AnalyticKafkaService.Settings
     public class MongoSettings
     {
         [Required]
-        public string MongoConnectionString { get; set; } = string.Empty;
+        public string ConnectionString { get; set; } = string.Empty;
 
         [Required]
         public string DatabaseName { get; set; } = string.Empty;
